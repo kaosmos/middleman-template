@@ -2,6 +2,8 @@ doctype 5
 html lang=I18n.locale
   head = partial "partials/head"
   body
+    - if sitemap.find_resource_by_path("sprite.svg")
+      .svg-inliner= partial "sprite.svg"
     = yield
 
     = partial "partials/footer"

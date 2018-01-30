@@ -32,6 +32,10 @@ module Middleman
       template 'optional/application.sass', 'source/stylesheets/application.sass'
       remove_file 'source/stylesheets/functions/_urls.sass'
       template 'optional/urls.sass', 'source/stylesheets/functions/_urls.sass'
+      template 'optional/_svg.sass', 'source/stylesheets/blocks/_svg.sass'
+      template 'optional/svg/svg_icons.js', 'source/svg/svg_icons.js'
+      template 'optional/svg/svg.pattern', 'source/svg/svg.pattern'
+      template 'optional/svg/icons/sample.svg', 'source/svg/icons/sample.svg'
     end
 
     def setup_remotes

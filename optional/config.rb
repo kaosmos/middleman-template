@@ -72,3 +72,11 @@ proxy "/_redirects", "/templates/redirects.txt"
 #   end
 # end
 <%- end -%>
+
+helpers do
+  def icon(name)
+    content_tag(:svg) do
+      content_tag(:use, "", "xlink:href" => "#" + name)
+    end
+  end
+end
