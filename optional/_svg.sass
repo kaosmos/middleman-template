@@ -1,15 +1,15 @@
 .svg-inliner
-  display: none !important
+  display: none !important // hide the SVG spritesheet container
 
 svg
-  display: inline-block
-  vertical-align: text-bottom // così le icone siederanno sulla linea di base
-  width: 1em
-  height: 1em // così le icone erediteranno la dimensione del testo nel contesto in cui si trovano
+  display: inline-block // the icons will respect the vertical-align
+  vertical-align: text-bottom // the icons will sit on the text baseline
+  width: 1em  // the icons will inherit the in-context text size
+  height: 1em // ditto
+  fill: currentColor // to have this property settable via CSS you must to strip every fill attribute from the SVG
 
-  fill: currentColor // gli svg devono avere tutti gli attributi fill rimossi perché questa proprietà funzioni
-
-//  altre proprietà controllabili
+//  other SVG attributes settable via CSS
+//  -------------------------------------
 //  fill-opacity: .9
 //  stroke: currentColor
 //  stroke-opacity: .9
