@@ -9,54 +9,6 @@ const extractSass = new ExtractTextPlugin({
   disable: process.env.NODE_ENV === "development"
 });
 
-// SVG icons system prefs - start
-var svgSpriteLoaderConfig = JSON.stringify({
-  extract: true,
-  spriteFilename: "sprite.svg"
-});
-var svgoConfig = JSON.stringify({
-  multipass: true,
-  pretty: true,
-  plugins: [
-    {cleanupAttrs: true},
-    {cleanupEnableBackground: true},
-    {cleanupIDs: true},
-    {cleanupListOfValues: true},
-    {cleanupNumericValues: true},
-    {collapseGroups: true},
-    {convertColors: true},
-    {convertPathData: true},
-    {convertShapeToPath: true},
-    {convertStyleToAttrs: true},
-    {convertTransform: true},
-    {mergePaths: true},
-    {moveElemsAttrsToGroup: true},
-    {moveGroupAttrsToElems: true},
-    {removeAttrs: {attrs: '(fill|stroke)'}}, // if you don't want any color from the original svg
-    {removeComments: true},
-    {removeDesc: false}, // for usability reasons
-    {removeDimensions: true},
-    {removeDoctype: true},
-    {removeEditorsNSData: true},
-    {removeEmptyAttrs: true},
-    {removeEmptyContainers: true},
-    {removeEmptyText: true},
-    {removeHiddenElems: true},
-    {removeMetadata: true},
-    {removeNonInheritableGroupAttrs: true},
-    {removeRasterImages: true}, // bitmap! you shall not pass!
-    {removeTitle: false}, // for usability reasons
-    {removeUnknownsAndDefaults: true},
-    {removeUnusedNS: true},
-    {removeUselessDefs: true},
-    {removeUselessStrokeAndFill: true},
-    {removeViewBox: false},
-    {removeXMLProcInst: true},
-    {sortAttrs: true}
-  ]
-});
-// SVG icons system prefs - end
-
 module.exports = {
   entry: {
     application: './source/javascripts/index.js',
@@ -115,9 +67,58 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loaders: [
-          'svg-sprite-loader?' + svgSpriteLoaderConfig,
-          'svgo?' + svgoConfig
+        use: [
+          {
+            loader: 'svg-sprite-loader',
+            options: {
+              extract: true,
+              spriteFilename: "sprite.svg"
+            }
+          },
+          {
+            loader: 'svgo-loader',
+            options: {
+              multipass: true,
+              pretty: true,
+              plugins: [
+                {cleanupAttrs: true},
+                {cleanupEnableBackground: true},
+                {cleanupIDs: true},
+                {cleanupListOfValues: true},
+                {cleanupNumericValues: true},
+                {collapseGroups: true},
+                {convertColors: true},
+                {convertPathData: true},
+                {convertShapeToPath: true},
+                {convertStyleToAttrs: true},
+                {convertTransform: true},
+                {mergePaths: true},
+                {moveElemsAttrsToGroup: true},
+                {moveGroupAttrsToElems: true},
+                {removeAttrs: {attrs: '(fill|stroke)'}}, // if you don't want any color from the original svg
+                {removeComments: true},
+                {removeDesc: false}, // for usability reasons
+                {removeDimensions: true},
+                {removeDoctype: true},
+                {removeEditorsNSData: true},
+                {removeEmptyAttrs: true},
+                {removeEmptyContainers: true},
+                {removeEmptyText: true},
+                {removeHiddenElems: true},
+                {removeMetadata: true},
+                {removeNonInheritableGroupAttrs: true},
+                {removeRasterImages: true}, // bitmap! you shall not pass!
+                {removeTitle: false}, // for usability reasons
+                {removeUnknownsAndDefaults: true},
+                {removeUnusedNS: true},
+                {removeUselessDefs: true},
+                {removeUselessStrokeAndFill: true},
+                {removeViewBox: false},
+                {removeXMLProcInst: true},
+                {sortAttrs: true}
+              ]
+            }
+          }
         ]
       }
     ]
